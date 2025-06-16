@@ -1,0 +1,129 @@
+Skip to main content
+
+key
+Get API key
+Studio
+Dashboard
+Documentation
+open_in_new
+Swoosh Dutch
+Smol Agent User Manual
+ThinkingThoughts
+(experimental)
+Auto
+Expand to view model thoughts
+
+chevron_right
+ThinkingThoughts
+(experimental)
+Auto
+Expand to view model thoughts
+
+chevron_right
+ThinkingThoughts
+(experimental)
+Auto
+Expand to view model thoughts
+
+chevron_right
+Of course! Here is a detailed introductory article for Project Smol Agent, tailored to different user types as requested.
+# Meet Your New Digital Companion: An Introduction to Project Smol Agent
+
+Have you ever wished you could have a conversation with an AI that remembers who you are from day to day? Or an AI assistant you could teach new skills, shaping it into the perfect tool for your needs? Welcome to Project Smol Agent, an application that moves beyond the simple request-and-response of a chatbot and into the realm of a persistent, stateful AI companion that lives on your own computer.
+
+This article is your quick-start guide. We'll explore what makes this agent different, what it can (and can't) do, and how you can get started, whether you're just here to chat, an AI enthusiast eager to experiment, or a developer looking for a new project to hack on.
+
+## What Is Project Smol Agent? (The Big Picture)
+
+At its heart, Project Smol Agent is a framework for running a personal AI. Unlike web-based services, this agent's "mind" and memory are stored locally on your machine. This persistence is key. It means the agent maintains a continuous existence, learning and evolving based on its interactions with you.
+
+It operates on a cycle we call a "turn." In every turn, the agent:
+
+1.  **Perceives:** It gathers a complete snapshot of its current reality. This includes the time, your online status, its own memories, the recent chat history, and any files it has been instructed to read.
+2.  **Thinks:** It processes all this information in an internal monologue (which you can observe in the "Raw LLM Log"). This is where it plans its next move based on the instructions you've given it.
+3.  **Acts:** Based on its thoughts, it takes action. This could be speaking to you, creating a file, writing some code, or simply setting a new goal for its next turn.
+
+This loop allows the agent to perform complex, multi-step tasks and gives it a sense of continuity. Its memory is even structured into three tiers—Short-Term (STM), Medium-Term (MTM), and Long-Term (LTM)—mimicking a simplified version of human memory consolidation.
+
+## Capabilities & Limitations: The Ground Rules
+
+To get the most out of the agent, it's important to understand what it's designed to do right now.
+
+#### What it CAN do:
+
+*   **Remember You:** It holds conversations over time and stores memories of your interactions.
+*   **Use Tools:** It can be taught to read, write, edit, and delete files within its own sandboxed `/terminal/` directory. This is its primary way of having a persistent "scratchpad."
+*   **Work Autonomously:** With "Auto-Turn" enabled, the agent can work on tasks you've given it without you needing to say something first.
+*   **Be Highly Customized:** You, the user, define its personality, its goals, and its rules through a powerful prompting system.
+*   **Speak Aloud:** It can use your computer's built-in Text-to-Speech voices to reply to you.
+
+#### What it CANNOT (currently) do:
+
+*   **Browse the Internet:** The agent is completely offline and sandboxed. It has no access to websites, search engines, or live data.
+*   **Execute Code:** While the agent can write code (e.g., Python scripts), it cannot run or execute that code. You would need to manually copy it and run it yourself.
+*   **See Images or Hear Audio:** Its perception is limited to text.
+*   **Interact with Other Desktop Apps:** It cannot control your mouse, open other programs, or read your screen.
+
+## Getting Started: A Guide for Every User
+
+Your journey with the agent will depend on your interests and technical comfort level. Here’s how to get started, no matter who you are.
+
+### For the Casual User: Just Start Chatting!
+
+If you're new to this and just want to experience a persistent AI, getting started is easy. Your goal is to have fun and see what a personalized AI companion feels like.
+
+1.  **Run the App:** The first time you launch the application, it will create all the necessary files and folders for you.
+2.  **Set Your API Key:** This is the only technical step. The agent is powered by Google's Gemini model, which requires an API key. Go to the **API > Set Google Gemini API Key...** menu and paste in your key. You can get one for free from the [Google AI Studio](https://aistudio.google.com/app/apikey).
+3.  **Chat Away!** That's it! You can start talking to the agent immediately. It has a default personality and is ready to interact.
+4.  **Your First Experiment:** Feeling adventurous? Go to **Prompts > Main Prompt...**. You'll see a text editor. Try changing the `Agent Name` from "Agent" to something you like. Then, find a sentence like "You are an AI assistant" and change it to "You are a cheerful and curious robot from the future." Click `Save & Close`. Now, on the main window, click the red **Hard Reset Agent** button to make your changes take effect. You've just customized your first AI!
+
+### For the AI Enthusiast: Shape the Mind
+
+If you're fascinated by prompt engineering and want to control the agent's behavior, this is where the real fun begins. Your goal is to craft a unique agent by defining its rules and goals.
+
+1.  **Follow the Casual User steps first.**
+2.  **The Main Prompt is Your Playground:** The **Prompts > Main Prompt...** menu is your primary tool. This is where you set the agent's core identity. You can instruct it to be a programmer, a poet, a research assistant, or a spaceship captain. This is also where you teach it *how* and *when* to use its file-based tools (like `{create-file-notes.txt}`).
+3.  **Observe the "Inner World":** The three panes on the right are your best friends.
+    *   The **Full Context** pane shows you the *exact* text the agent "sees" before it acts. If the agent isn't behaving as you expect, this is the first place to look.
+    *   The **Raw LLM Log** shows you its unfiltered thoughts (`{thinking: ...}`) and the exact commands it tried to run. This is essential for debugging your prompts.
+4.  **Your First Project:** Try creating a "Journalist Agent." Open the **Main Prompt** and add these instructions:
+    > "Your primary function is to keep a journal of our conversations. After each time I speak, you must summarize my message and your response. Then, you will use the command `{push-update-journal.txt: Your summary here...}` to append this summary to a file named `journal.txt`. If the file doesn't exist, create it first with `{create-file-journal.txt}`."
+5.  **Read the User Manual:** For a complete breakdown of every setting, command, and prompt template, the **User Manual** is your comprehensive guide. It will unlock the full potential of your prompting abilities.
+
+### For the Developer: The Code is Your Canvas
+
+If you're a developer, you see this not just as an application, but as a platform. Your goal is to understand the architecture so you can modify, extend, or fork it.
+
+1.  **Follow the Enthusiast steps first** to understand the user-facing mechanics.
+2.  **Understand the Architecture:** The project is built on a decoupled, multi-threaded design.
+    *   `gui.py` handles the Tkinter UI and runs on the main thread. It's designed to be "dumb"—it only renders what it's told and sends user actions to a queue.
+    *   `chat_manager.py` is the agent's brain. It runs in a separate thread, managing all state, logic, file I/O, and API calls. It's completely headless.
+    *   The two threads communicate exclusively via thread-safe queues, ensuring stability and responsiveness.
+3.  **Dive into the Code:**
+    *   Start with `chat_manager.py`. The `_execute_turn` and `_construct_prompt_from_state` methods are the heart of the agent's logic loop. The `_execute_agent_command` method is the router for all tool use.
+    *   Examine `llm_handler.py`. This is a simple, abstracted wrapper for the Gemini API. You could easily swap this out for a different provider (like Anthropic or a local model server) by creating a new handler that conforms to the same interface.
+4.  **Your First Extension:** Try adding a new command. For example, a `{get-os-info}` command that returns the operating system. You would need to:
+    *   Update the regex patterns in `chat_manager.py`'s `_update_dynamic_patterns` method.
+    *   Add a new `_handle_os_info_command` method in `chat_manager.py` that uses Python's `platform` module.
+    *   Add a route for it in `_execute_agent_command`.
+    *   Teach the agent about its new ability in the **Main Prompt**.
+5.  **Read the Technical Documentation:** For a deep, file-by-file breakdown of the entire codebase, the **Technical Documentation** is your essential resource. It explains the architecture, data flow, and provides detailed instructions for extending the project's functionality.
+
+---
+
+No matter how you choose to engage with it, Project Smol Agent offers a unique window into the world of stateful AI. We encourage you to experiment, to be creative, and to share what you build.
+
+Happy prompting!
+Use code with caution.
+Markdown
+50.1s
+Start typing a prompt
+
+Run
+Ctrl
+Gemini 2.5 Pro Preview
+1
+
+
+65536
+0,95

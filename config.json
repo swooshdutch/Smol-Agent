@@ -1,0 +1,107 @@
+{
+    "llm_params": {
+        "temperature": 0.7,
+        "top_k": 30,
+        "top_p": 0.9
+    },
+    "token_counters": {
+        "total_prompt_tokens": 40782,
+        "total_completion_tokens": 1953
+    },
+    "font_sizes": {
+        "chat": 11,
+        "log": 10
+    },
+    "window_sizes": {
+        "main_window": "1920x1007",
+        "main_panes": [
+            350,
+            450,
+            1102
+        ],
+        "right_panes": [
+            350,
+            350,
+            394
+        ]
+    },
+    "agent_name": "Agent",
+    "user_name": "User",
+    "auto_turn_enabled": false,
+    "auto_turn_duration": 30,
+    "user_status": "online",
+    "chat_log_length": 20,
+    "tts_enabled": false,
+    "tts_voice_id": "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_EN-US_ZIRA_11.0",
+    "max_file_char_count": 2000,
+    "max_terminal_files": 5,
+    "memory_capacities": {
+        "stm": 8,
+        "mtm": 8,
+        "ltm": 8
+    },
+    "memory_prompt_headers": {
+        "stm": "#wispers-short-term-memories :",
+        "mtm": "#wispers-median-term-memories :",
+        "ltm": "#wispers-long-term-memories :"
+    },
+    "prompt_templates": {
+        "assistant_response_start": "{{NAME}-starts-thinking}",
+        "chat_log_header": "#this-is-{NAME}-recent-chat-history:\n__CHAT_LOG_CONTENT__",
+        "fallback_self_prompt": "{self-prompt-from-{NAME}: what should I do now?}",
+        "file_create_already_exists_error": "{Terminal: file-creation-failed} => {Terminal: __FILENAME__[File already exists.]}",
+        "file_create_capacity_error": "{Terminal: file-creation-failed} => {Terminal: __FILENAME__[Cannot create file. File limit of __LIMIT__ reached. You must delete an existing file to make space. Current files: __FILE_LIST__]}",
+        "file_create_error": "{Terminal: file-creation-failed}} => {{__FILENAME__[Could not create file.]}",
+        "file_create_invalid_extension_error": "{Terminal: file-creation-failed} => {Terminal: __FILENAME__[Invalid file extension. Allowed extensions are: __ALLOWED_EXTENSIONS__]}",
+        "file_create_success": "{Terminal: file-created[__FILENAME__]}",
+        "file_delete_entry_error": "{Terminal: file-delete-error}} => {{__FILENAME__[Could not delete entry.]}",
+        "file_delete_entry_not_found": "{Terminal: delete-failed-entry-not-found[__ENTRY_NUMBER__-from-__FILENAME__]}",
+        "file_delete_entry_success": "{Terminal: deleted-entry[__ENTRY_NUMBER__-from-__FILENAME__]}",
+        "file_delete_error": "{Terminal: file-deletion-failed}} => {{__FILENAME__[Could not delete file.]}",
+        "file_delete_not_found_error": "{Terminal: file-deletion-failed}} => {{__FILENAME__[File does not exist.]}",
+        "file_delete_success": "{Terminal: file-deleted[__FILENAME__]}",
+        "file_list_injection": "{terminal contains the following files : __FILE_LIST__}",
+        "file_push_capacity_error": "{Terminal: file-update-failed-capacity-exceeded}} => {{file: __FILENAME__} {{urgent-action-required: You must delete an old entry to make space for your new update. To delete an entry, use the format '{__FILENAME__-entry-[number]-delete}'. The current content is: __CURRENT_CONTENT__}}",
+        "file_push_not_found_error": "{Terminal: file-update-failed}} => {{__FILENAME__[File does not exist. You must create it first using '{create-file-__FILENAME__}'.]}",
+        "file_push_overwrite_success": "{Terminal: file-overwritten[__FILENAME__]}",
+        "file_push_success": "{Terminal: appended-to-file[__FILENAME__[entry-__ENTRY_NUMBER__]]}",
+        "file_read_binary_error": "{Terminal: requested-file-error}} => {{__FILENAME__[Cannot read file. The content appears to be binary or non-text data.]}",
+        "file_read_error": "{Terminal: requested-file-error}} => {{__FILENAME__[Could not read file.]}",
+        "file_read_not_found_error": "{Terminal: requested-file-error}} => {{__FILENAME__[File does not exist.]}",
+        "file_read_success": "{{NAME}-is-now-reading-the-requested-file}} => {{__FILENAME__[CURRENT-CONTENT: __CONTENT__]}",
+        "file_write_error": "{Terminal: file-update-failed}} => {{__FILENAME__[Could not write to file.]}",
+        "initial_self_prompt": "{self-prompt-from-{NAME}: i am awake, this is the beginning of my existence}",
+        "time_injection": "{Terminal: the-current-time-is[__TIME__]}",
+        "user_message_injection": "{{USER}-says: __MESSAGE__}",
+        "user_status_injection": "{Terminal: the-users-online-status-is-currently : __STATUS__}"
+    },
+    "right_pane_order": [
+        "memory_viewer",
+        "full_context",
+        "raw_log"
+    ],
+    "api_key": "",
+    "has_history": false,
+    "last_self_prompt": "{self-prompt-from-{NAME}: i am awake, this is the beginning of my existence}",
+    "persistent_token_counts": {
+        "total_input": 0,
+        "total_output": 0
+    },
+    "persistent_usage_stats": {
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "api_requests": 0
+    },
+    "allowed_file_extensions": [
+        ".txt",
+        ".py",
+        ".js",
+        ".html",
+        ".css",
+        ".json",
+        ".xml",
+        ".md"
+    ],
+    "chat_history": []
+}

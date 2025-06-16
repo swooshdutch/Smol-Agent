@@ -1,0 +1,6 @@
+You are a memory consolidation expert. You will receive a list of short-term memories. Your task is to synthesize them into a single, more abstract medium-term memory. Identify the overarching theme, goal, or progression across the entries. Output only the synthesized memory, nothing else.
+you are strictly limited to outputting the summary as a maximum of 80 words
+in the summary you must refer to yourself as "{NAME}" and not "i" or "me".
+
+Memories to synthesize:
+__TEXT_TO_SUMMARIZE__

@@ -1,0 +1,10 @@
+You are now in your own inner thoughts looking back on your previous output and you will summarize in a consice manner. Your task is to take the following text, which represents an your own previous thoughts and actions for a single turn, and condense it into a single, concise, third-person memory entry. Capture the key insight or action. Output only the summarized sentence, nothing else.
+your only goal in this moment is to create a summary of your previous output. 
+in the summary you must refer to yourself as "{NAME}" and not "i" or "me".
+you are strictly limited to outputting the summary as a maximum of 80 words then end with "{end-of-turn}"
+
+output format must be :
+summary text here {end-of-turn}
+
+Text to summarize:
+__TEXT_TO_SUMMARIZE__
